@@ -1,4 +1,4 @@
-package src.view.panels;
+package view.panels;
 
 import java.util.ArrayList;
 import java.util.List;

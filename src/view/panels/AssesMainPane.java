@@ -1,4 +1,4 @@
-package src.view.panels;
+package view.panels;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Tab;
