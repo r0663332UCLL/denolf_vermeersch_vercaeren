@@ -11,10 +11,8 @@ import javafx.scene.layout.GridPane;
 
 public class CategoryDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
-	private TextField titleField, descriptionField;
-	private ComboBox categoryField;
 
-	public CategoryDetailPane() {
+    public CategoryDetailPane() {
 		this.setPrefHeight(150);
 		this.setPrefWidth(300);
 		
@@ -23,15 +21,15 @@ public class CategoryDetailPane extends GridPane {
 		this.setHgap(5);
 
 		this.add(new Label("Title:"), 0, 0, 1, 1);
-		titleField = new TextField();
+        TextField titleField = new TextField();
 		this.add(titleField, 1, 0, 1, 1);
 
 		this.add(new Label("Description:"), 0, 1, 1, 1);
-		descriptionField = new TextField();
+        TextField descriptionField = new TextField();
 		this.add(descriptionField, 1, 1, 1, 1);
 
 		this.add(new Label("Main Category:"), 0, 2, 1, 1);
-		categoryField = new ComboBox<>();
+        ComboBox categoryField = new ComboBox<>();
 		this.add(categoryField, 1, 2, 1, 1);
 
 		btnCancel = new Button("Cancel");

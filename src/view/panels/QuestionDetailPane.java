@@ -14,12 +14,8 @@ import javafx.scene.layout.Pane;
 
 public class QuestionDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
-	private TextArea statementsArea;
-	private TextField questionField, statementField, feedbackField;
-	private Button btnAdd, btnRemove;
-	private ComboBox categoryField;
 
-	public QuestionDetailPane() {
+    public QuestionDetailPane() {
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
 		
@@ -28,35 +24,35 @@ public class QuestionDetailPane extends GridPane {
         this.setHgap(5);
         
 		add(new Label("Question: "), 0, 0, 1, 1);
-		questionField = new TextField();
+        TextField questionField = new TextField();
 		add(questionField, 1, 0, 2, 1);
 		
 		add(new Label("Statement: "), 0, 1, 1, 1);
-		statementField = new TextField();
+        TextField statementField = new TextField();
 		add(statementField, 1, 1, 2, 1);
 
 		add(new Label("Statements: "), 0, 2, 1, 1);
-		statementsArea = new TextArea();
+        TextArea statementsArea = new TextArea();
 		statementsArea.setPrefRowCount(5);
 		statementsArea.setEditable(false);
 		add(statementsArea, 1, 2, 2, 5);
 
 		Pane addRemove = new HBox();
-		btnAdd = new Button("add");
+        Button btnAdd = new Button("add");
 		btnAdd.setOnAction(new AddStatementListener());
 		addRemove.getChildren().add(btnAdd);
 
-		btnRemove = new Button("remove");
+        Button btnRemove = new Button("remove");
 		btnRemove.setOnAction(new RemoveStatementListener());
 		addRemove.getChildren().add(btnRemove);
 		add(addRemove, 1, 8, 2, 1);
 
 		add(new Label("Category: "), 0, 9, 1, 1);
-		categoryField = new ComboBox();
+        ComboBox categoryField = new ComboBox();
 		add(categoryField, 1, 9, 2, 1);
 
 		add(new Label("Feedback: "), 0, 10, 1, 1);
-		feedbackField = new TextField();
+        TextField feedbackField = new TextField();
 		add(feedbackField, 1, 10, 2, 1);
 
 		btnCancel = new Button("Cancel");

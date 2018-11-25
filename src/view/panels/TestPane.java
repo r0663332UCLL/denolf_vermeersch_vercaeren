@@ -12,7 +12,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 
 public class TestPane extends GridPane {
-	private Label questionField;
 	private Button submitButton;
 	private ToggleGroup statementGroup;
 	
@@ -24,7 +23,7 @@ public class TestPane extends GridPane {
         this.setVgap(5);
         this.setHgap(5);
 
-		questionField = new Label();
+		Label questionField = new Label();
 		add(questionField, 0, 0, 1, 1);
 		
 		statementGroup = new ToggleGroup();
@@ -37,7 +36,7 @@ public class TestPane extends GridPane {
 	}
 
 	public List<String> getSelectedStatements() {
-		 List<String> selected = new ArrayList<String>();
+		 List<String> selected = new ArrayList<>();
 		if(statementGroup.getSelectedToggle()!=null){
 			selected.add(statementGroup.getSelectedToggle().getUserData().toString());
 		}

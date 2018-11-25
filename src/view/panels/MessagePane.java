@@ -16,8 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 public class MessagePane extends GridPane {
-	private Button testButton;
-	
+
 	public MessagePane (){
 	    setBorder(new Border(new BorderStroke(Color.BLACK, 
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
@@ -25,8 +24,8 @@ public class MessagePane extends GridPane {
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
-        
-		testButton = new Button("Evaluate");
+
+		Button testButton = new Button("Evaluate");
 		testButton.setOnAction(new EventHandler<ActionEvent>() { //TODO remove or generalize
 			
 			@Override
