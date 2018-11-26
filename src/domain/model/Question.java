@@ -1,7 +1,5 @@
 package domain.model;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-
 import java.util.ArrayList;
 
 abstract class Question {
@@ -64,5 +62,18 @@ abstract class Question {
         } else {
             return statements.get(0);
         }
+    }
+
+    boolean isCorrectStatement(String statement) {
+        if (statement != null) {
+            if (statement.equals(getStatements().get(0))) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
     }
 }
