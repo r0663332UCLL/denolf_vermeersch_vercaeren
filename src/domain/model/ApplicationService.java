@@ -36,6 +36,7 @@ public class ApplicationService {
         return questionDb.getQuestions();
     }
 
+    //voorlopig nog hardcoded behaviour, later met text file
     public Test generateTest(){
         Test test = new Test(questionDb.getQuestions(), "score");
         return test;
