@@ -13,4 +13,7 @@ class ModelException extends RuntimeException {
     ModelException(Throwable exception) {
         super(exception);
     }
+
+    public ModelException(void printStackTrace) {
+    }
 }
