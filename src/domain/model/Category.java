@@ -16,14 +16,14 @@ class Category {
     }
 
     private void setTitle(String title) {
-        if (title.isEmpty()) {
+        if (title.trim().isEmpty()) {
             throw new ModelException("cannot make category with empty title");
         }
         this.title = title;
     }
 
     private void setDescription(String description) {
-        if (description.isEmpty()) {
+        if (description.trim().isEmpty()) {
             throw new ModelException("cannot make category with empty description");
         }
         this.description = description;

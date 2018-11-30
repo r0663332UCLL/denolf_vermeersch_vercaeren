@@ -56,7 +56,8 @@ abstract class Question {
         this.category = category;
     }
 
-    public String getCorrectStatement() {
+    //zolang we het effectieve juiste antwoord niet nodig hebben best private laten
+    private String getCorrectStatement() {
         if (statements.get(0).isEmpty()) {
             return "empty";
         } else {
@@ -66,7 +67,7 @@ abstract class Question {
 
     boolean isCorrectStatement(String statement) {
         if (statement != null) {
-            if (statement.equals(getStatements().get(0))) {
+            if (statement.equals(getCorrectStatement())) {
                 return true;
             } else {
                 return false;
