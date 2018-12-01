@@ -1,6 +1,7 @@
-package domain.model;
+package domain.db;
 
 import java.util.ArrayList;
+import domain.model.Question;
 
 public interface QuestionDb {
 

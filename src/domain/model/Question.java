@@ -2,7 +2,7 @@ package domain.model;
 
 import java.util.ArrayList;
 
-abstract class Question {
+public abstract class Question {
     private String question;
     private ArrayList<String> statements;
     private String feedback;
@@ -67,11 +67,7 @@ abstract class Question {
 
     boolean isCorrectStatement(String statement) {
         if (statement != null) {
-            if (statement.equals(getCorrectStatement())) {
-                return true;
-            } else {
-                return false;
-            }
+            return statement.equals(getCorrectStatement());
         } else {
             return false;
         }

@@ -1,5 +1,10 @@
 package domain.model;
 
+import domain.db.CategoryDb;
+import domain.db.CategoryDbInFile;
+import domain.db.QuestionDb;
+import domain.db.QuestionDbInFile;
+
 import java.util.ArrayList;
 
 public class ApplicationService {

@@ -1,4 +1,6 @@
-package domain.model;
+package domain.db;
+
+import domain.model.Category;
 
 import java.util.ArrayList;
 

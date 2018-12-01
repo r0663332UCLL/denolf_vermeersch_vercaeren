@@ -1,6 +1,6 @@
 package domain.model;
 
-class Category {
+public class Category {
     private String title;
     private String description;
     private Category mainCategory;
