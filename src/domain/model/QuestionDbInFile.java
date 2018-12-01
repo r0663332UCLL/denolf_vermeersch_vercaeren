@@ -14,14 +14,10 @@ public class QuestionDbInFile implements QuestionDb {
     @Override
     public void addQuestion(Question question) {
         BufferedWriter writer = null;
-        String statementString = null;
 
-        for (String i : question.getStatements()) {
-            statementString += i + " ";
-        }
         try {
             writer = new BufferedWriter(new FileWriter("/testdatabase/vraag.txt"));
-            writer.write(question.getQuestion() + " " + statementString + question.getFeedback());
+            writer.write(question.toString());
         } catch (IOException e) {
             throw new ModelException(e.getMessage());
         } finally {

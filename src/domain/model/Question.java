@@ -77,4 +77,16 @@ abstract class Question {
         }
 
     }
+
+    @Override
+    public String toString() {
+        String str = null;
+        String statementString = null;
+
+        for (String i : getStatements()) {
+            statementString += i + " ";
+        }
+        str = getQuestion() + " " + statementString + getFeedback();
+        return str;
+    }
 }
