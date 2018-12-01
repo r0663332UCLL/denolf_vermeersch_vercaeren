@@ -5,13 +5,13 @@ public class Category {
     private String description;
     private Category mainCategory;
 
-    Category(String title, String description, Category mainCategory) {
+    public Category(String title, String description, Category mainCategory) {
         setTitle(title);
         setDescription(description);
         setMainCategory(mainCategory);
     }
 
-    Category(String title, String description) {
+    public Category(String title, String description) {
         this(title, description, null);
     }
 

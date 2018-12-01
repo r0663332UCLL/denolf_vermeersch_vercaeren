@@ -38,8 +38,7 @@ public class QuestionDbInFile implements QuestionDb {
             inputFile = new File("testdatabase/vraag.txt");
 
             if (!inputFile.isFile()) {
-                System.out.println("Parameter is not an existing file");
-                return;
+                throw new DbException("Parameter is not an existing file");
             }
 
             tempFile = new File(inputFile.getAbsolutePath() + ".tmp");
@@ -61,13 +60,12 @@ public class QuestionDbInFile implements QuestionDb {
 
             //Delete the original file
             if (!inputFile.delete()) {
-                System.out.println("Could not delete file");
-                return;
+                throw new DbException("Could not delete file");
             }
 
             //Rename the new file to the filename the original file had.
             if (!tempFile.renameTo(inputFile)) {
-                System.out.println("Could not rename file");
+                throw new DbException("Could not rename file");
             }
         } catch (FileNotFoundException ex) {
             throw new DbException(ex.getMessage());
@@ -79,7 +77,30 @@ public class QuestionDbInFile implements QuestionDb {
 
     @Override
     public ArrayList<Question> getQuestions() {
+        ArrayList<Question> questions = new ArrayList<>();
+        File inputFile;
 
-        return null;
+        try {
+            inputFile = new File("testdatabase/vraag.txt");
+
+            if (!inputFile.isFile()) {
+                throw new DbException("Parameter is not an existing file");
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+
+            String currentLine = null;
+
+            while((currentLine = reader.readLine()) != null) {
+
+            }
+
+        } catch (FileNotFoundException ex) {
+            throw new DbException(ex.getMessage());
+        }
+        catch (IOException ex) {
+            throw new DbException(ex.getMessage());
+        }
+        return questions;
     }
 }

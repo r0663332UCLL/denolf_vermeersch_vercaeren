@@ -74,15 +74,19 @@ public abstract class Question {
 
     }
 
+
     @Override
     public String toString() {
         String str = null;
         String statementString = null;
 
         for (String i : getStatements()) {
-            statementString += i + " ";
+            statementString += i + ";";
         }
-        str = getQuestion() + " " + statementString + getFeedback();
+        if (statementString.equals(null)) {
+            statementString = "null;";
+        }
+        str = getQuestion() + ";" + statementString + getFeedback() + ";" + getCategory() + ";" + this.getClass().getName();
         return str;
     }
 }
