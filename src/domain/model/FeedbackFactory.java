@@ -7,7 +7,7 @@ public class FeedbackFactory {
         FeedbackBehaviour feedbackBehaviour = null;
         Class feedbackClass = null;
         try {
-            feedbackClass = Class.forName(type + "Behaviour");
+            feedbackClass = Class.forName("domain.model." + type + "Behaviour");
             Object feedbackObject = feedbackClass.newInstance();
             feedbackBehaviour = (FeedbackBehaviour) feedbackObject;
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
