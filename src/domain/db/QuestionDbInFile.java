@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 
 public class QuestionDbInFile implements QuestionDb {
-    BufferedWriter writer = null;
 
+    @Override
     public void addQuestion(Question question) {
         BufferedWriter writer = null;
 
@@ -29,10 +29,11 @@ public class QuestionDbInFile implements QuestionDb {
     }
 
     @Override
-    public void removeQuestion(String question) {
+    public void removeQuestion(Question question) {
 
         File inputFile;
         File tempFile;
+
 
         try {
             inputFile = new File("testdatabase/vraag.txt");
@@ -49,7 +50,7 @@ public class QuestionDbInFile implements QuestionDb {
             String currentLine = null;
 
             while((currentLine = reader.readLine()) != null) {
-                if (!currentLine.trim().equals(question.trim())) {
+                if (!currentLine.trim().equals(question.toString().trim())) {
                     writer.println(currentLine);
                     writer.flush();
                 }

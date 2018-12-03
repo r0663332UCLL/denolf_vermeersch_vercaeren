@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface CategoryDb {
 
     void addCategory(Category category);
-    void removeCategory(String title);
+    void removeCategory(Category category);
     ArrayList<Category> getCategories();
 
 }

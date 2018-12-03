@@ -44,4 +44,16 @@ public class Category {
     public Category getMainCategory() {
         return mainCategory;
     }
+
+    @Override
+    public String toString() {
+        String str = null;
+        String mainCat= null;
+
+        if (getMainCategory() == null) {
+            mainCat = "null;";
+        }
+        str = getTitle() + ";" + getDescription() + ";" + mainCat;
+        return str;
+    }
 }
