@@ -43,7 +43,7 @@ public class ApplicationService {
 
     //voorlopig nog hardcoded behaviour, later met text file
     public Test generateTest(){
-        Test test = new Test(questionDb.getQuestions(), "score");
+        Test test = new Test(questionDb.getQuestions(), "Score");
         return test;
     }
 }

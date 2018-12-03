@@ -10,7 +10,13 @@ public class Test {
 
     public Test(ArrayList<Question> questions, String feedbackBehaviour){
         setQuestions(questions);
+        setFeedbackBehaviour(feedbackBehaviour);
     }
+    private FeedbackBehaviour setFeedbackBehaviour(String type){
+        FeedbackFactory feedbackFactory = new FeedbackFactory();
+        return feedbackFactory.createFeedbackBehaviour(type, this);
+    }
+
     private void setQuestions(ArrayList<Question> questions){
         if(questions != null || !questions.isEmpty()){
             this.questions = questions;
