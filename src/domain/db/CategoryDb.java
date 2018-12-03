@@ -8,6 +8,6 @@ public interface CategoryDb {
 
     void addCategory(Category category);
     void removeCategory(Category category);
-    ArrayList<Category> getCategories();
+    ArrayList<String> getCategories();
 
 }

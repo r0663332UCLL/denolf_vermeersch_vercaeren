@@ -47,4 +47,5 @@ public class ApplicationService {
         Test test = new Test(questionDb.getQuestions(), "Score");
         return test;
     }
+
 }

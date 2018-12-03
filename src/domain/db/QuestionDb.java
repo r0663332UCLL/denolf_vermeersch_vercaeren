@@ -7,6 +7,6 @@ public interface QuestionDb {
 
     void addQuestion(Question question);
     void removeQuestion(Question question);
-    ArrayList<Question> getQuestions();
+    ArrayList<String> getQuestions();
 
 }

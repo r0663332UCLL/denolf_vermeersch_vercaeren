@@ -73,8 +73,8 @@ public class CategoryDbInFile implements CategoryDb {
     }
 
     @Override
-    public ArrayList<Category> getCategories() {
-        ArrayList<Category> questions = new ArrayList<>();
+    public ArrayList<String> getCategories() {
+        ArrayList<String> questions = new ArrayList<>();
         File inputFile;
 
         try {
@@ -89,9 +89,7 @@ public class CategoryDbInFile implements CategoryDb {
             String currentLine = null;
 
             while((currentLine = reader.readLine()) != null) {
-                if (!DbHelper.hasMainCategory(currentLine)) {
-
-                }
+                questions.add(currentLine);
             }
 
         } catch (FileNotFoundException ex) {

@@ -86,7 +86,7 @@ public abstract class Question {
         if (statementString.equals(null)) {
             statementString = "null;";
         }
-        str = getQuestion() + ";" + statementString + getFeedback() + ";" + getCategory() + ";" + this.getClass().getName();
+        str = getQuestion() + ";" + statementString + getFeedback() + ";" + getCategory().getTitle() + ";" + this.getClass().getName();
         return str;
     }
 }
