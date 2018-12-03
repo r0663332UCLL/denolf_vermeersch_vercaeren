@@ -43,6 +43,7 @@ public class ApplicationService {
 
     //voorlopig nog hardcoded behaviour, later met text file
     public Test generateTest(){
+        //DIT MOET THOMAS IMPLEMENTEREN WANT IK SNAP NIET HOE WRITERS EN FILES EN SHIT WERKEN
         Test test = new Test(questionDb.getQuestions(), "Score");
         return test;
     }
