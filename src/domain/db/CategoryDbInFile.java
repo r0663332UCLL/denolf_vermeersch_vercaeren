@@ -89,7 +89,9 @@ public class CategoryDbInFile implements CategoryDb {
             String currentLine = null;
 
             while((currentLine = reader.readLine()) != null) {
+                if (!DbHelper.hasMainCategory(currentLine)) {
 
+                }
             }
 
         } catch (FileNotFoundException ex) {

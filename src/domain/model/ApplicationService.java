@@ -21,8 +21,8 @@ public class ApplicationService {
         categoryDb.addCategory(category);
     }
 
-    public void removeCategory(String title){
-        categoryDb.removeCategory(title);
+    public void removeCategory(Category category){
+        categoryDb.removeCategory(category);
     }
 
     public ArrayList<Category> getCategories(){
@@ -33,7 +33,7 @@ public class ApplicationService {
         questionDb.addQuestion(question);
     }
 
-    public void removeQuestion(String question){
+    public void removeQuestion(Question question){
         questionDb.removeQuestion(question);
     }
 
@@ -43,7 +43,7 @@ public class ApplicationService {
 
     //voorlopig nog hardcoded behaviour, later met text file
     public Test generateTest(){
-        //DIT MOET THOMAS IMPLEMENTEREN WANT IK SNAP NIET HOE WRITERS EN FILES EN SHIT WERKEN
+        //TODO DIT MOET THOMAS IMPLEMENTEREN WANT IK SNAP NIET HOE WRITERS EN FILES EN SHIT WERKEN
         Test test = new Test(questionDb.getQuestions(), "Score");
         return test;
     }
