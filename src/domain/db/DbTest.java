@@ -22,5 +22,30 @@ public class DbTest {
         service.addQuestion(q2);
         service.addCategory(maincat);
         service.addCategory(subcat);
+        ArrayList<Category> cats = service.getCategories();
+        ArrayList<Question> qus = service.getQuestions();
+        for (int i = 0; i < cats.size(); i++) {
+            System.out.println(cats.get(i).toString());
+        }
+
+        for (int i = 0; i < qus.size(); i++) {
+            System.out.println(qus.get(i).toString());
+        }
+
+        service.removeCategory(subcat);
+        service.removeQuestion(q1);
+        System.out.println("verwijdering in orde");
+        cats = service.getCategories();
+        qus = service.getQuestions();
+
+        for (int i = 0; i < cats.size(); i++) {
+            System.out.println(cats.get(i).toString());
+        }
+
+        for (int i = 0; i < qus.size(); i++) {
+            System.out.println(qus.get(i).toString());
+        }
+
+        System.out.println(service.getMappedData());
     }
 }
