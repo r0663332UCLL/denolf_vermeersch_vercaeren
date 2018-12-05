@@ -73,8 +73,10 @@ public class CategoryDbInFile implements CategoryDb {
     }
 
     @Override
-    public ArrayList<String> getCategories() {
-        ArrayList<String> questions = new ArrayList<>();
+    public ArrayList<Category> getCategories() {
+        ArrayList<String> categories = new ArrayList<>();
+        ArrayList<Category> tmpCat = new ArrayList<>();
+
         File inputFile;
 
         try {
@@ -89,7 +91,28 @@ public class CategoryDbInFile implements CategoryDb {
             String currentLine = null;
 
             while((currentLine = reader.readLine()) != null) {
-                questions.add(currentLine);
+                categories.add(currentLine);
+            }
+
+            //get all main categories first
+            for (int i = 0; i < categories.size(); i++) {
+                if(!hasMainCategory(categories.get(i))) {
+                    tmpCat.add(stringToCategory(categories.get(i)));
+                }
+            }
+
+            //get all categories and match them with their main categories
+
+            for (int y = 0; y < categories.size(); y++) {
+                if(hasMainCategory(categories.get(y))) {
+                    Category cat1 = null;
+                    for (int x = 0; x < tmpCat.size(); x++) {
+                        if (tmpCat.get(x).getTitle().equals(getMainCategory(categories.get(y)))) {
+                            cat1 = tmpCat.get(x);
+                        }
+                    }
+                    tmpCat.add(stringToCategoryWithMain(categories.get(y), cat1));
+                }
             }
 
         } catch (FileNotFoundException ex) {
@@ -98,6 +121,79 @@ public class CategoryDbInFile implements CategoryDb {
         catch (IOException ex) {
             throw new DbException(ex.getMessage());
         }
-        return questions;
+        return tmpCat;
+    }
+
+    public static boolean hasMainCategory(String category) {
+        String[] separated;
+        char separator = ';';
+
+        if (!(category == null)) {
+            separated = category.split("[" + separator + "]");
+
+            if (separated[separated.length -1].equals(null)) {
+                return false;
+            } else {
+                return true;
+            }
+
+        } else {
+            throw new DbException("question is null");
+        }
+    }
+
+    public static String getMainCategory(String category) {
+        String[] separated;
+        char separator = ';';
+
+        if (category != null) {
+            separated = category.split("[" + separator + "]");
+
+            return separated[2];
+
+        } else {
+            throw new DbException("question is null");
+        }
+    }
+
+    public static Category stringToCategoryWithMain(String category, Category maincat) {
+        String[] separated;
+        char separator = ';';
+
+        String title;
+        String description;
+        String mainCat = null;
+
+        if (category != null) {
+            separated = category.split("[" + separator + "]");
+
+            title = separated[0];
+            description = separated[1];
+
+            return new Category(title, description, maincat);
+
+        } else {
+            throw new DbException("question is null");
+        }
+    }
+
+    public static Category stringToCategory(String category) {
+        String[] separated;
+        char separator = ';';
+
+        String title;
+        String description;
+
+        if (category != null) {
+            separated = category.split("[" + separator + "]");
+
+            title = separated[0];
+            description = separated[1];
+
+            return new Category(title, description);
+
+        } else {
+            throw new DbException("question is null");
+        }
     }
 }

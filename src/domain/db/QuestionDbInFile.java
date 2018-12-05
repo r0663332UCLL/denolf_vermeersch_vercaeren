@@ -1,6 +1,8 @@
 package domain.db;
 
+import domain.model.MultipleChoiceQuestion;
 import domain.model.Question;
+import domain.model.YesNoQuestion;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -93,7 +95,7 @@ public class QuestionDbInFile implements QuestionDb {
             String currentLine = null;
 
             while((currentLine = reader.readLine()) != null) {
-                questions.add(DbHelper.stringToQuestion(currentLine));
+                questions.add(stringToQuestion(currentLine));
             }
 
         } catch (FileNotFoundException ex) {
@@ -103,5 +105,38 @@ public class QuestionDbInFile implements QuestionDb {
             throw new DbException(ex.getMessage());
         }
         return questions;
+    }
+
+    public static Question stringToQuestion(String question) {
+        String[] separated;
+        char separator = ';';
+        ArrayList<String> statements = new ArrayList<>();
+        String title;
+        String feedback;
+        String category;
+        String type = null;
+
+        if (question != null) {
+            separated = question.split("[" + separator + "]");
+
+            for (int i = 1; i <= separated.length -3; i++) {
+                statements.add(separated[i]);
+            }
+
+            title = separated[0];
+            feedback = separated[separated.length - 3];
+            category = separated[separated.length - 2];
+            type = separated[separated.length -1];
+
+            if (type.equals("domain.model.YesNoQuestion")) {
+                return new YesNoQuestion(title, statements, feedback, category);
+            } else if(type.equals("domain.model.MultipleChoiceQuestion")) {
+                return new MultipleChoiceQuestion(title, statements, feedback, category);
+            }
+
+        } else {
+            throw new DbException("question is null");
+        }
+        return null;
     }
 }

@@ -47,7 +47,7 @@ public class Category {
 
     @Override
     public String toString() {
-        String str = null;
+        String str;
         String mainCat= null;
 
         if (getMainCategory() == null) {

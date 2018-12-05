@@ -1,11 +1,9 @@
 package domain.model;
 
-import domain.db.CategoryDb;
-import domain.db.CategoryDbInFile;
-import domain.db.QuestionDb;
-import domain.db.QuestionDbInFile;
+import domain.db.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ApplicationService {
 
@@ -41,6 +39,9 @@ public class ApplicationService {
         return questionDb.getQuestions();
     }
 
+    public HashMap<Question, Category> getMappedData() {
+        return DbHelper.LoadAllToMemory(this.getQuestions(), this.getCategories());
+    }
     //voorlopig nog hardcoded behaviour, later met text file
     public Test generateTest(){
         //TODO DIT MOET THOMAS IMPLEMENTEREN WANT IK SNAP NIET HOE WRITERS EN FILES EN SHIT WERKEN
