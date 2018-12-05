@@ -1,1 +1,4 @@
+vraag1;nullyes yes yes;no no no;da kan beter eh vriend;ooo;domain.model.YesNoQuestion
+vraag;nullyes yes yes;no no no;was da alles?;patronen;domain.model.YesNoQuestion
+vraag1;nullyes yes yes;no no no;da kan beter eh vriend;ooo;domain.model.YesNoQuestion
 vraag;nullyes yes yes;no no no;was da alles?;patronen;domain.model.YesNoQuestion

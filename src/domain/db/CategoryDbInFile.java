@@ -11,7 +11,7 @@ public class CategoryDbInFile implements CategoryDb {
         BufferedWriter writer = null;
 
         try {
-            writer = new BufferedWriter(new FileWriter("testdatabase/groep.txt"));
+            writer = new BufferedWriter(new FileWriter("testdatabase/groep.txt", true));
             writer.write(category.toString() + System.getProperty("line.separator"));
         } catch (IOException e) {
             throw new DbException(e.getMessage());

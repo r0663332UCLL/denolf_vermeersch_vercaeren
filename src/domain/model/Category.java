@@ -50,8 +50,10 @@ public class Category {
         String str;
         String mainCat= null;
 
-        if (getMainCategory() == null) {
+        if ((getMainCategory()) == null) {
             mainCat = "null;";
+        } else {
+            mainCat = getMainCategory().title;
         }
         str = getTitle() + ";" + getDescription() + ";" + mainCat;
         return str;

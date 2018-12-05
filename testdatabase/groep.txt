@@ -1,1 +1,2 @@
-patronen;patronen van ooo;null
+ooo;object georienteerd programmeren;null;
+patronen;patronen van ooo;ooo
