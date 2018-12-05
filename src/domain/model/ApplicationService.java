@@ -15,7 +15,7 @@ public class ApplicationService {
         questionDb = new QuestionDbInFile();
     }
 
-    public void AddCategory(Category category){
+    public void addCategory(Category category){
         categoryDb.addCategory(category);
     }
 

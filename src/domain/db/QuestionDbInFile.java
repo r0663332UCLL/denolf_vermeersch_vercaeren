@@ -15,7 +15,7 @@ public class QuestionDbInFile implements QuestionDb {
         BufferedWriter writer = null;
 
         try {
-            writer = new BufferedWriter(new FileWriter("/testdatabase/vraag.txt"));
+            writer = new BufferedWriter(new FileWriter("testdatabase/vraag.txt"));
             writer.write(question.toString() + System.getProperty("line.separator"));
         } catch (IOException e) {
             throw new DbException(e.getMessage());

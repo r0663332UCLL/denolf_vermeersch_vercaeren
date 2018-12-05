@@ -1,0 +1,1 @@
+vraag;nullyes yes yes;no no no;was da alles?;patronen;domain.model.YesNoQuestion

@@ -31,6 +31,11 @@ public abstract class Question {
     }
 
     private void setStatements(ArrayList<String> statements) {
+        for (int i = 0; i < statements.size(); i++) {
+            if (statements.get(i).contains(";")) {
+                throw new ModelException("statement cannot contain a ';'");
+            }
+        }
         this.statements = statements;
     }
 
