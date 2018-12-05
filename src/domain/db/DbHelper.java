@@ -16,12 +16,13 @@ import java.util.ArrayList;
 
 public class DbHelper {
 
-    public static Question stringToQuestion(String question, Category category) {
-        String[] separated = null;
+    public static Question stringToQuestion(String question) {
+        String[] separated;
         char separator = ';';
         ArrayList<String> statements = new ArrayList<>();
-        String title = null;
-        String feedback = null;
+        String title;
+        String feedback;
+        String category;
         String type = null;
 
         if (question != null) {
@@ -33,6 +34,7 @@ public class DbHelper {
 
             title = separated[0];
             feedback = separated[separated.length - 3];
+            category = separated[separated.length - 2];
             type = separated[separated.length -1];
 
             if (type.equals("domain.model.YesNoQuestion")) {
@@ -110,9 +112,7 @@ public class DbHelper {
 
         //get all main categories first
         for (int i = 0; i < categories.size(); i++) {
-            if(hasMainCategory(categories.get(i))) {
-                continue;
-            } else {
+            if(!hasMainCategory(categories.get(i))) {
                 tmpCat.add(stringToCategory(categories.get(i)));
             }
         }
@@ -129,6 +129,10 @@ public class DbHelper {
                 }
                 tmpCat.add(stringToCategoryWithMain(categories.get(y), cat1));
             }
+        }
+
+        for (int z = 0; z < questions.size(); z++) {
+
         }
         return hmap;
     }

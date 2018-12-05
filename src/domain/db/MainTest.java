@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public class MainTest {
     public static void main(String args[]) {
-        Question vraag = new YesNoQuestion("vraag", new ArrayList<String>(), "feedback", new Category("category", "description"));
-        System.out.println(vraag.toString());
+        Question vraag = new YesNoQuestion("vraag", new ArrayList<String>(), "feedback", "category");
+        QuestionDbInFile db = new QuestionDbInFile();
+        db.addQuestion(vraag);
     }
 }

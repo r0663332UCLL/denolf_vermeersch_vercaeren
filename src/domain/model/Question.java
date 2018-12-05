@@ -6,9 +6,9 @@ public abstract class Question {
     private String question;
     private ArrayList<String> statements;
     private String feedback;
-    private Category category;
+    private String category;
 
-    public Question(String question, ArrayList<String> statements, String feedback, Category category) {
+    public Question(String question, ArrayList<String> statements, String feedback, String category) {
         setQuestion(question);
         setStatements(statements);
         setFeedback(feedback);
@@ -45,11 +45,11 @@ public abstract class Question {
         this.feedback = feedback.trim();
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    private void setCategory(Category category) {
+    private void setCategory(String category) {
         if (category == null) {
             throw new ModelException("Cannot make a question with empty category");
         }
@@ -86,7 +86,7 @@ public abstract class Question {
         if (statementString.equals(null)) {
             statementString = "null;";
         }
-        str = getQuestion() + ";" + statementString + getFeedback() + ";" + getCategory().getTitle() + ";" + this.getClass().getName();
+        str = getQuestion() + ";" + statementString + getFeedback() + ";" + getCategory() + ";" + this.getClass().getName();
         return str;
     }
 }

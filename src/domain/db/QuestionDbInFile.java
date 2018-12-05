@@ -77,8 +77,8 @@ public class QuestionDbInFile implements QuestionDb {
     }
 
     @Override
-    public ArrayList<String> getQuestions() {
-        ArrayList<String> questions = new ArrayList<>();
+    public ArrayList<Question> getQuestions() {
+        ArrayList<Question> questions = new ArrayList<>();
         File inputFile;
 
         try {
@@ -93,7 +93,7 @@ public class QuestionDbInFile implements QuestionDb {
             String currentLine = null;
 
             while((currentLine = reader.readLine()) != null) {
-                questions.add(currentLine.trim());
+                questions.add(DbHelper.stringToQuestion(currentLine));
             }
 
         } catch (FileNotFoundException ex) {
