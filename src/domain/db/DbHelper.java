@@ -50,11 +50,11 @@ public class DbHelper {
     }
 
     public static Category stringToCategory(String category) {
-        String[] separated = null;
+        String[] separated;
         char separator = ';';
 
-        String title = null;
-        String description = null;
+        String title;
+        String description;
 
         if (category != null) {
             separated = category.split("[" + separator + "]");
@@ -70,11 +70,11 @@ public class DbHelper {
     }
 
     public static Category stringToCategoryWithMain(String category, Category maincat) {
-        String[] separated = null;
+        String[] separated;
         char separator = ';';
 
-        String title = null;
-        String description = null;
+        String title;
+        String description;
         String mainCat = null;
 
         if (category != null) {
