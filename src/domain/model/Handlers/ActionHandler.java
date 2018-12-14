@@ -8,6 +8,9 @@ public abstract class ActionHandler {
     public void setService(ApplicationService service) {
         this.service = service;
     }
+    public ApplicationService getService() {
+        return this.service;
+    }
 
     public abstract Object HandleRequest();
 }
