@@ -1,6 +1,6 @@
 package domain.model;
 
-class ModelException extends RuntimeException {
+public class ModelException extends RuntimeException {
     ModelException() {
         super();
     }
@@ -9,7 +9,7 @@ class ModelException extends RuntimeException {
         super(message, exception);
     }
 
-    ModelException(String message) {
+    public ModelException(String message) {
         super(message);
     }
 
