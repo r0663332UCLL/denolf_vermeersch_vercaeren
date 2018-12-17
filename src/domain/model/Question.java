@@ -83,12 +83,12 @@ public abstract class Question {
     @Override
     public String toString() {
         String str = null;
-        String statementString = null;
+        String statementString = new String();
 
         for (String i : getStatements()) {
             statementString += i + ";";
         }
-        if (statementString.equals(null)) {
+        if (statementString == null) {
             statementString = "null;";
         }
         str = getQuestion() + ";" + statementString + getFeedback() + ";" + getCategory() + ";" + this.getClass().getName();

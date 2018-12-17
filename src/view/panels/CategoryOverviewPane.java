@@ -1,5 +1,9 @@
 package view.panels;
 
+import domain.model.ApplicationService;
+import domain.model.Category;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -15,7 +19,9 @@ import javafx.scene.layout.GridPane;
 public class CategoryOverviewPane extends GridPane {
 	private TableView table;
 	private Button btnNew;
-	
+	//TODO  USE CONTROLLER INSTEAD OF SERVICE
+	ApplicationService service = new ApplicationService();
+	ObservableList<Category> data = FXCollections.observableArrayList(service.getCategories());
 	public CategoryOverviewPane() {
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
@@ -32,7 +38,7 @@ public class CategoryOverviewPane extends GridPane {
         descriptionCol.setCellValueFactory(new PropertyValueFactory("description"));
         table.getColumns().add(descriptionCol);
 		this.add(table, 0, 1, 2, 6);
-		
+		table.setItems(data);
 		btnNew = new Button("New");
 		this.add(btnNew, 0, 11, 1, 1);
 	}

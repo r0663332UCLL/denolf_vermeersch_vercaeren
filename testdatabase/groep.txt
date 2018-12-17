@@ -1,3 +1,4 @@
 ooo;object georienteerd programmeren;null;
+patronen;patronen van ooo;ooo
 ooo;object georienteerd programmeren;null;
-ooo;object georienteerd programmeren;null;
+patronen;patronen van ooo;ooo

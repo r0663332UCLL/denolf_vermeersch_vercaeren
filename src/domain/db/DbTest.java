@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class DbTest {
     public static void main(String args[]) {
         ArrayList<String> statements1 = new ArrayList<>();
-        statements1.add("yes yes yes");
-        statements1.add("no no no");
+        statements1.add("yes");
+        statements1.add("neeee");
 
         Category maincat = new Category("ooo", "object georienteerd programmeren");
         Category subcat = new Category("patronen", "patronen van ooo", maincat);
-        Question q1 = new YesNoQuestion("vraag1", statements1, "da kan beter eh vriend", "ooo");
-        Question q2 = new YesNoQuestion("vraag", statements1, "was da alles?", "patronen");
+        Question q1 = new YesNoQuestion("a+b*c=69 wat is b?", statements1, "onmogelijk", "ooo");
+        Question q2 = new YesNoQuestion("als wouter wouter is is wouter dan nog steeds wouter???", statements1, "was da alles?", "patronen");
         ApplicationService service = new ApplicationService();
         service.addQuestion(q1);
         service.addQuestion(q2);
@@ -32,8 +32,6 @@ public class DbTest {
             System.out.println(qus.get(i).toString());
         }
 
-        service.removeCategory(subcat);
-        service.removeQuestion(q1);
         System.out.println("verwijdering in orde");
         cats = service.getCategories();
         qus = service.getQuestions();
