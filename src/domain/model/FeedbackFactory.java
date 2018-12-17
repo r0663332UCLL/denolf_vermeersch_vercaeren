@@ -4,8 +4,8 @@ public class FeedbackFactory {
 
     public FeedbackBehaviour createFeedbackBehaviour(String type, Test test){
 
-        FeedbackBehaviour feedbackBehaviour = null;
-        Class feedbackClass = null;
+        FeedbackBehaviour feedbackBehaviour;
+        Class feedbackClass;
         try {
             feedbackClass = Class.forName("domain.model." + type + "Behaviour");
             Object feedbackObject = feedbackClass.newInstance();

@@ -9,7 +9,7 @@ public class HandlerFactory {
     }
 
     private ActionHandler getController(String handlerName, ApplicationService service) {
-        ActionHandler handler = null;
+        ActionHandler handler;
         try {
             Class<?> handlerClass = Class.forName("ui.controller." + handlerName + "Handler");
             Object handlerObject = handlerClass.newInstance();

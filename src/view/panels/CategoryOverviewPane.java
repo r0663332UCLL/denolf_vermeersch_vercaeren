@@ -2,6 +2,7 @@ package view.panels;
 
 import domain.model.ApplicationService;
 import domain.model.Category;
+import domain.model.Handlers.ActionHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,8 +43,8 @@ public class CategoryOverviewPane extends GridPane {
 		btnNew = new Button("New");
 		this.add(btnNew, 0, 11, 1, 1);
 	}
-	
-	public void setNewAction(EventHandler<ActionEvent> newAction) {
+
+    public void setNewAction(EventHandler<ActionEvent> newAction) {
 		btnNew.setOnAction(newAction);
 	}
 	

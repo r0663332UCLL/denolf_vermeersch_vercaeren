@@ -43,7 +43,7 @@ public class CategoryDbInFile implements CategoryDb {
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             PrintWriter writer = new PrintWriter(new FileWriter(tempFile));
 
-            String currentLine = null;
+            String currentLine;
 
             while((currentLine = reader.readLine()) != null) {
                 if (!currentLine.trim().equals(category.toString().trim())) {
@@ -64,10 +64,7 @@ public class CategoryDbInFile implements CategoryDb {
             if (!tempFile.renameTo(inputFile)) {
                 throw new DbException("Could not rename file");
             }
-        } catch (FileNotFoundException ex) {
-            throw new DbException(ex.getMessage());
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             throw new DbException(ex.getMessage());
         }
     }
@@ -88,37 +85,34 @@ public class CategoryDbInFile implements CategoryDb {
 
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 
-            String currentLine = null;
+            String currentLine;
 
             while((currentLine = reader.readLine()) != null) {
                 categories.add(currentLine);
             }
 
             //get all main categories first
-            for (int i = 0; i < categories.size(); i++) {
-                if(!hasMainCategory(categories.get(i))) {
-                    tmpCat.add(stringToCategory(categories.get(i)));
+            for (String category1 : categories) {
+                if (!hasMainCategory(category1)) {
+                    tmpCat.add(stringToCategory(category1));
                 }
             }
 
             //get all categories and match them with their main categories
 
-            for (int y = 0; y < categories.size(); y++) {
-                if(hasMainCategory(categories.get(y))) {
+            for (String category : categories) {
+                if (hasMainCategory(category)) {
                     Category cat1 = null;
-                    for (int x = 0; x < tmpCat.size(); x++) {
-                        if (tmpCat.get(x).getTitle().equals(getMainCategory(categories.get(y)))) {
-                            cat1 = tmpCat.get(x);
+                    for (Category aTmpCat : tmpCat) {
+                        if (aTmpCat.getTitle().equals(getMainCategory(category))) {
+                            cat1 = aTmpCat;
                         }
                     }
-                    tmpCat.add(stringToCategoryWithMain(categories.get(y), cat1));
+                    tmpCat.add(stringToCategoryWithMain(category, cat1));
                 }
             }
 
-        } catch (FileNotFoundException ex) {
-            throw new DbException(ex.getMessage());
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             throw new DbException(ex.getMessage());
         }
         return tmpCat;
@@ -131,11 +125,7 @@ public class CategoryDbInFile implements CategoryDb {
         if (!(category == null)) {
             separated = category.split("[" + separator + "]");
 
-            if (separated[separated.length -1].equals(null)) {
-                return false;
-            } else {
-                return true;
-            }
+            return separated[separated.length - 1] != null;
 
         } else {
             throw new DbException("question is null");

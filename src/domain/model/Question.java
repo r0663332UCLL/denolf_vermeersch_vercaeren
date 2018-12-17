@@ -82,7 +82,7 @@ public abstract class Question {
 
     @Override
     public String toString() {
-        String str = null;
+        String str;
         String statementString = new String();
 
         for (String i : getStatements()) {

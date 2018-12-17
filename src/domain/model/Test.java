@@ -18,8 +18,10 @@ public class Test {
     }
 
     private void setQuestions(ArrayList<Question> questions){
-        if(questions != null || !questions.isEmpty()){
-            this.questions = questions;
+        if(questions != null){
+            if (!questions.isEmpty()) {
+                this.questions = questions;
+            }
         } else throw new ModelException("the questions list cannot be empty");
     }
     public Question next(){

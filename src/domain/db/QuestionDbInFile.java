@@ -49,7 +49,7 @@ public class QuestionDbInFile implements QuestionDb {
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             PrintWriter writer = new PrintWriter(new FileWriter(tempFile));
 
-            String currentLine = null;
+            String currentLine;
 
             while((currentLine = reader.readLine()) != null) {
                 if (!currentLine.trim().equals(question.toString().trim())) {
@@ -70,10 +70,7 @@ public class QuestionDbInFile implements QuestionDb {
             if (!tempFile.renameTo(inputFile)) {
                 throw new DbException("Could not rename file");
             }
-        } catch (FileNotFoundException ex) {
-            throw new DbException(ex.getMessage());
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             throw new DbException(ex.getMessage());
         }
     }
@@ -92,16 +89,13 @@ public class QuestionDbInFile implements QuestionDb {
 
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 
-            String currentLine = null;
+            String currentLine;
 
             while((currentLine = reader.readLine()) != null) {
                 questions.add(stringToQuestion(currentLine));
             }
 
-        } catch (FileNotFoundException ex) {
-            throw new DbException(ex.getMessage());
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             throw new DbException(ex.getMessage());
         }
         return questions;
@@ -114,7 +108,7 @@ public class QuestionDbInFile implements QuestionDb {
         String title;
         String feedback;
         String category;
-        String type = null;
+        String type;
 
         if (question != null) {
             separated = question.split("[" + separator + "]");
