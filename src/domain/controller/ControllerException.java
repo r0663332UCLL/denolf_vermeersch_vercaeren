@@ -1,19 +1,19 @@
-package domain.model;
+package domain.controller;
 
-public class ModelException extends RuntimeException {
-    ModelException() {
+public class ControllerException extends RuntimeException {
+    ControllerException() {
         super();
     }
 
-    ModelException(String message, Throwable exception) {
+    ControllerException(String message, Throwable exception) {
         super(message, exception);
     }
 
-    public ModelException(String message) {
+    public ControllerException(String message) {
         super(message);
     }
 
-    ModelException(Throwable exception) {
+    ControllerException(Throwable exception) {
         super(exception);
     }
 }

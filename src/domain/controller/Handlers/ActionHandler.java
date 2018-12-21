@@ -1,6 +1,8 @@
-package domain.model.Handlers;
+package domain.controller.Handlers;
 
 import domain.model.ApplicationService;
+
+import java.util.ArrayList;
 
 public abstract class ActionHandler {
     private ApplicationService service;
@@ -12,5 +14,5 @@ public abstract class ActionHandler {
         return this.service;
     }
 
-    public abstract Object HandleRequest();
+    public abstract Object HandleRequest(ArrayList<Object> parameters);
 }

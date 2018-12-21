@@ -2,7 +2,6 @@ package view.panels;
 
 import domain.model.ApplicationService;
 import domain.model.Category;
-import domain.model.Handlers.ActionHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

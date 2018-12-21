@@ -1,5 +1,6 @@
-package domain.model.Handlers;
+package domain.controller.Handlers;
 
+import domain.controller.ControllerException;
 import domain.model.ApplicationService;
 import domain.model.ModelException;
 
@@ -8,12 +9,12 @@ public class HandlerFactory {
         ActionHandler handler = null;
         Class handlerClass = null;
         try {
-            handlerClass = Class.forName("domain.model.Handlers." + name + "Handler");
+            handlerClass = Class.forName("domain.controller.Handlers." + name + "Handler");
             Object handlerObject = handlerClass.newInstance();
             handler = (ActionHandler) handlerObject;
             handler.setService(service);
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e){
-            throw new ModelException(e.getMessage());
+            throw new ControllerException(e.getMessage());
         }
 
         return handler;
