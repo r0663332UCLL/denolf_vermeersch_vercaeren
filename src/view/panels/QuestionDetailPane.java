@@ -1,5 +1,7 @@
 package view.panels;
 
+import domain.controller.Controller;
+import domain.controller.ControllerException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,6 +16,7 @@ import javafx.scene.layout.Pane;
 
 public class QuestionDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
+	private Controller controller = new Controller();
 
     public QuestionDetailPane() {
 		this.setPrefHeight(300);
@@ -63,7 +66,12 @@ public class QuestionDetailPane extends GridPane {
 		btnOK.isDefaultButton();
 		btnOK.setText("Save");
 		add(btnOK, 1, 11, 2, 1);
-		
+		btnOK.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+
+			}
+		});
 	}
 
 	public void setSaveAction(EventHandler<ActionEvent> saveAction) {

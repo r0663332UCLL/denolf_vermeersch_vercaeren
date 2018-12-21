@@ -1,17 +1,18 @@
 package view.panels;
 
+import domain.controller.Controller;
+import domain.model.Category;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+
+import java.util.ArrayList;
 
 public class CategoryDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
-
+    private Controller controller = new Controller();
     public CategoryDetailPane() {
 		this.setPrefHeight(150);
 		this.setPrefWidth(300);
@@ -30,6 +31,14 @@ public class CategoryDetailPane extends GridPane {
 
 		this.add(new Label("Main Category:"), 0, 2, 1, 1);
         ComboBox categoryField = new ComboBox<>();
+        ArrayList<Object> catList = controller.doActionWithReturnValue("GetCategory", new ArrayList<>());
+        for (int i = 0; i < catList.size(); i++) {
+            Category tmpCat = (Category) catList.get(i);
+            if (tmpCat != null) {
+                categoryField.getItems().add(tmpCat.getTitle());
+            }
+        }
+
 		this.add(categoryField, 1, 2, 1, 1);
 
 		btnCancel = new Button("Cancel");
