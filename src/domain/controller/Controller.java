@@ -1,7 +1,6 @@
 package domain.model;
 
-import domain.model.ApplicationService;
-import domain.model.Handlers.HandlerFactory;
+import domain.controller.Handlers.HandlerFactory;
 
 public class Controller {
     private ApplicationService service = new ApplicationService();
