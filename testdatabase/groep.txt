@@ -1,2 +1,7 @@
 ooo;object georienteerd programmeren;null;
 patronen;patronen van ooo;ooo
+bs2;besturingsystemen2;patronen
+nieuw;beschrijving;patronen
+nog 1;yes;patronen
+test;test;nog 1
+wownogeenvraag;beschrijving;null;

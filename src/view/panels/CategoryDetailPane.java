@@ -9,11 +9,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 public class CategoryDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
     private Controller controller = new Controller();
+    ArrayList<Object> catList = controller.doActionWithReturnValue("GetCategory", new ArrayList<>());
     public CategoryDetailPane() {
+        super();
 		this.setPrefHeight(150);
 		this.setPrefWidth(300);
 		
@@ -31,7 +34,6 @@ public class CategoryDetailPane extends GridPane {
 
 		this.add(new Label("Main Category:"), 0, 2, 1, 1);
         ComboBox categoryField = new ComboBox<>();
-        ArrayList<Object> catList = controller.doActionWithReturnValue("GetCategory", new ArrayList<>());
         for (int i = 0; i < catList.size(); i++) {
             Category tmpCat = (Category) catList.get(i);
             if (tmpCat != null) {
@@ -47,7 +49,27 @@ public class CategoryDetailPane extends GridPane {
 		btnOK = new Button("Save");
 		btnOK.isDefaultButton();
 		this.add(btnOK, 1, 3, 1, 1);
-	}
+        //voor UI: in parameters eerst naam, dan description en dan de oudercategorie. Indien er geen oudercategorie is, laatste element in lijst null maken
+        btnOK.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<Object> params = new ArrayList<>();
+                params.add(titleField.getText());
+                params.add(descriptionField.getText());
+                if (categoryField.getSelectionModel().getSelectedItem() == null) {
+                    params.add(null);
+                } else {
+                    for (int i = 0; i < catList.size(); i++) {
+                        Category tmpCat = (Category) catList.get(i);
+                        if (tmpCat.getTitle().equals(categoryField.getSelectionModel().getSelectedItem().toString())) {
+                            params.add(catList.get(i));
+                        }
+                    }
+                }
+                controller.doAction("AddCategory", params);
+            }
+        });
+    }
 
 	public void setSaveAction(EventHandler<ActionEvent> saveAction) {
 		btnOK.setOnAction(saveAction);

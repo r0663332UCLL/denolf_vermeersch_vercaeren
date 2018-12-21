@@ -18,7 +18,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.util.ArrayList;
 
@@ -51,8 +53,17 @@ public class CategoryOverviewPane extends GridPane {
 			public void handle(ActionEvent event) {
 				CategoryDetailPane categoryDetailPane = new CategoryDetailPane();
 				final Stage categoryDetail = new Stage();
+				categoryDetail.initModality(Modality.APPLICATION_MODAL);
 				Group root = new Group();
 				Scene scene = new Scene(root);
+				categoryDetail.setOnCloseRequest(new EventHandler<WindowEvent>() {
+					@Override
+					public void handle(WindowEvent event) {
+						data = FXCollections.observableArrayList(controller.doActionWithReturnValue("GetCategory", new ArrayList<>()));
+						table.setItems(data);
+						table.refresh();
+					}
+				});
 				root.getChildren().add(categoryDetailPane);
 				categoryDetail.setScene(scene);
 				categoryDetail.show();
