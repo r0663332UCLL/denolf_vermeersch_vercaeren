@@ -52,9 +52,7 @@ public class QuestionDetailPane extends GridPane {
             @Override
             public void handle(ActionEvent event) {
                 statements.add(statementField.getText());
-                for (int i = 0; i < statements.size(); i++) {
-                    statementsArea.setText(statementsArea.getText() + statements.get(i));
-                }
+                statementsArea.setText(statementsArea.getText() + statementField.getText() + System.getProperty("line.separator"));
             }
         });
 		addRemove.getChildren().add(btnAdd);
@@ -89,19 +87,20 @@ public class QuestionDetailPane extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				ArrayList<Object> params = new ArrayList<>();
-				params.add(questionField.getText());
-
-				if (categoryField.getSelectionModel().getSelectedItem() == null) {
-					params.add(null);
-				} else {
-					for (int i = 0; i < catList.size(); i++) {
-						Category tmpCat = (Category) catList.get(i);
-						if (tmpCat.getTitle().equals(categoryField.getSelectionModel().getSelectedItem().toString())) {
-							params.add(catList.get(i));
-						}
-					}
+				if (statements.size() <= 2) {
+				    if (statements.get(0).equals("yes")) {
+                        params.add("YesNoQuestion");
+                    } else {
+				        params.add("MultipleChoiceQuestion");
+                    }
+                } else {
+				    params.add("MultipleChoiceQuestion");
 				}
-				controller.doAction("AddCategory", params);
+				params.add(questionField.getText());
+				params.add(statements);
+				params.add(feedbackField.getText());
+				params.add(categoryField.getSelectionModel().getSelectedItem().toString());
+				controller.doAction("AddQuestion", params);
 			}
 		});
 	}
