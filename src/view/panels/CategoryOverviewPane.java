@@ -65,6 +65,7 @@ public class CategoryOverviewPane extends GridPane {
 					}
 				});
 				root.getChildren().add(categoryDetailPane);
+				categoryDetail.setResizable(false);
 				categoryDetail.setScene(scene);
 				categoryDetail.show();
 			}

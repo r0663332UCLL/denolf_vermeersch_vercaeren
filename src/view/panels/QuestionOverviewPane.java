@@ -64,6 +64,7 @@ public class QuestionOverviewPane extends GridPane {
 					}
 				});
 				root.getChildren().add(questionDetailPane);
+				questionDetail.setResizable(false);
 				questionDetail.setScene(scene);
 				questionDetail.show();
 			}
