@@ -61,7 +61,19 @@ public class QuestionDetailPane extends GridPane {
 		btnRemove.setOnAction(new RemoveStatementListener());
 		addRemove.getChildren().add(btnRemove);
 		add(addRemove, 1, 8, 2, 1);
-
+        btnRemove.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                statementsArea.setText("");
+                for (int i = 0; i < statements.size(); i++) {
+                    if (statements.get(i).equals(statementField.getText())) {
+                        statements.remove(i);
+                        continue;
+                    }
+                    statementsArea.setText(statementsArea.getText() + statements.get(i) + System.getProperty("line.separator"));
+                }
+            }
+        });
 		add(new Label("Category: "), 0, 9, 1, 1);
         ComboBox categoryField = new ComboBox();
         for (int i = 0; i < catList.size(); i++) {
