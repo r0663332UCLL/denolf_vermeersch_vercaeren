@@ -41,6 +41,7 @@ public class TestPane extends GridPane {
 		    add(but, 0,i+1,1,1);
         }
 		submitButton = new Button("Submit");
+		add(submitButton,0,9,1,1);
 		submitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
