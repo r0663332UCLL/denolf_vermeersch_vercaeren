@@ -2,3 +2,5 @@ a+b*c=69 wat is b?;yes;neeee;onmogelijk;ooo;domain.model.YesNoQuestion
 als wouter wouter is is wouter dan nog steeds wouter???;yes;neeee;was da alles?;patronen;domain.model.YesNoQuestion
 ssss;ssss;dddd;ssss;nieuw;domain.model.MultipleChoiceQuestion
 testvraag;dddddd;dddddd;fffffff;ff;ssss;bs2;domain.model.MultipleChoiceQuestion
+janeevraag;yes;no;jaofneeishet antwoord;nieuw;domain.model.YesNoQuestion
+nieuwe;yes;no;ja;nog 1;domain.model.YesNoQuestion

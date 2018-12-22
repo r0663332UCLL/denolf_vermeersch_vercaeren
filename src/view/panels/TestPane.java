@@ -3,19 +3,26 @@ package view.panels;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.model.Question;
+import domain.model.Test;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 public class TestPane extends GridPane {
 	private Button submitButton;
 	private ToggleGroup statementGroup;
+	private Test test;
+	private ArrayList<String> answers;
+	private Question question;
 	
-	public TestPane (){
+	public TestPane (Test test, ArrayList<String> answers){
+		super();
+		this.test = test;
+		this.answers = answers;
+        question = test.next();
 		this.setPrefHeight(300);
 		this.setPrefWidth(750);
 		
@@ -25,21 +32,30 @@ public class TestPane extends GridPane {
 
 		Label questionField = new Label();
 		add(questionField, 0, 0, 1, 1);
-		
-		statementGroup = new ToggleGroup();
+		questionField.setText(question.getQuestion());
 
+		statementGroup = new ToggleGroup();
+		for (int i = 0; i < question.getStatements().size(); i++) {
+		    RadioButton but = new RadioButton(question.getStatements().get(i));
+		    but.setToggleGroup(statementGroup);
+		    add(but, 0,i+1,1,1);
+        }
 		submitButton = new Button("Submit");
+		submitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                getSelectedStatements();
+            }
+        });
 	}
 	
 	public void setProcessAnswerAction(EventHandler<ActionEvent> processAnswerAction) {
 		submitButton.setOnAction(processAnswerAction);
 	}
 
-	public List<String> getSelectedStatements() {
-		 List<String> selected = new ArrayList<>();
+	public void getSelectedStatements() {
 		if(statementGroup.getSelectedToggle()!=null){
-			selected.add(statementGroup.getSelectedToggle().getUserData().toString());
+			answers.add(statementGroup.getSelectedToggle().getUserData().toString());
 		}
-		return selected;
 	}
 }

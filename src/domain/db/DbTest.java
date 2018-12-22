@@ -44,6 +44,5 @@ public class DbTest {
             System.out.println(qus.get(i).toString());
         }
 
-        System.out.println(service.getMappedData());
     }
 }
