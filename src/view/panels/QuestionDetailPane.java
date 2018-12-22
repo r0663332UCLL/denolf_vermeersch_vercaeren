@@ -22,7 +22,7 @@ public class QuestionDetailPane extends GridPane {
 	private int rowIndex = 2;
 	private Controller controller = new Controller();
 	ArrayList<String> statements = new ArrayList<>();
-    ArrayList<Object> catList = controller.doActionWithReturnValue("GetCategory", new ArrayList<>());
+    ArrayList catList = (ArrayList) controller.doAction("GetCategory", null);
 
     public QuestionDetailPane() {
 		this.setPrefHeight(300);

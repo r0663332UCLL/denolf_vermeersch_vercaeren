@@ -12,9 +12,9 @@ public class Test {
         setQuestions(questions);
         setFeedbackBehaviour(feedbackBehaviour);
     }
-    private FeedbackBehaviour setFeedbackBehaviour(String type){
+    private void setFeedbackBehaviour(String type){
         FeedbackFactory feedbackFactory = new FeedbackFactory();
-        return feedbackFactory.createFeedbackBehaviour(type, this);
+        feedbackBehaviour =  feedbackFactory.createFeedbackBehaviour(type, this);
     }
 
     private void setQuestions(ArrayList<Question> questions){

@@ -27,7 +27,7 @@ public class QuestionOverviewPane extends GridPane {
 	private TableView table;
 	private Button btnNew;
 	Controller controller = new Controller();
-	ObservableList<Object> data = FXCollections.observableArrayList(controller.doActionWithReturnValue("GetQuestion", new ArrayList<>()));
+	ObservableList<Object> data = FXCollections.observableArrayList((ArrayList) controller.doAction("GetQuestion", null));
 	public QuestionOverviewPane() {
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
@@ -58,7 +58,7 @@ public class QuestionOverviewPane extends GridPane {
 				questionDetail.setOnCloseRequest(new EventHandler<WindowEvent>() {
 					@Override
 					public void handle(WindowEvent event) {
-						data = FXCollections.observableArrayList(controller.doActionWithReturnValue("GetQuestion", new ArrayList<>()));
+						data = FXCollections.observableArrayList((ArrayList) controller.doAction("GetQuestion", null));
 						table.setItems(data);
 						table.refresh();
 					}

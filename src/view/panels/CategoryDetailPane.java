@@ -14,7 +14,7 @@ import java.util.Observable;
 public class CategoryDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
     private Controller controller = new Controller();
-    ArrayList<Object> catList = controller.doActionWithReturnValue("GetCategory", new ArrayList<>());
+    ArrayList catList = (ArrayList) controller.doAction("GetCategory", null);
     public CategoryDetailPane() {
         super();
 		this.setPrefHeight(150);

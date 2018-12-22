@@ -12,9 +12,12 @@ public class VerboseBehaviour implements FeedbackBehaviour {
         for (int i = 0; i < questions.size(); i++){
             Question currentQuestion = questions.get(i);
             String currentAnswer = answers.get(i);
-            if (currentQuestion.isCorrectStatement(currentAnswer)){
+            if (!currentQuestion.isCorrectStatement(currentAnswer)){
                 feedBack += currentQuestion.getFeedback() + "\n";
             }
+        }
+        if (feedBack.trim().isEmpty()){
+            feedBack = "Proficiat, alles juist!";
         }
 
         return feedBack;

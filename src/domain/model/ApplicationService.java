@@ -2,8 +2,13 @@ package domain.model;
 
 import domain.db.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 
 public class ApplicationService {
 
@@ -42,10 +47,32 @@ public class ApplicationService {
     public HashMap<Question, Category> getMappedData() {
         return DbHelper.LoadAllToMemory(this.getQuestions(), this.getCategories());
     }
-    //voorlopig nog hardcoded behaviour, later met text file
     public Test generateTest(){
-        //TODO DIT MOET THOMAS IMPLEMENTEREN WANT IK SNAP NIET HOE WRITERS EN FILES EN SHIT WERKEN
-        return new Test(questionDb.getQuestions(), "Score");
+        return new Test(questionDb.getQuestions(), getPreference());
+    }
+
+    private String getPreference(){
+
+        String result = "";
+        InputStream inputStream;
+
+        try {
+            Properties prop = new Properties();
+            String propFileName = "conf/configuration.properties";
+
+             inputStream = new FileInputStream(new File(propFileName));
+
+            if (inputStream != null) {
+                prop.load(inputStream);
+            } else {
+                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+            }
+
+             result = prop.getProperty("feedbackBehaviour");
+        } catch (Exception e) {
+            throw new ModelException(e.getMessage());
+        }
+        return result;
     }
 
 }

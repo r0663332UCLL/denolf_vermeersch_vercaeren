@@ -29,7 +29,7 @@ public class CategoryOverviewPane extends GridPane {
 	private TableView table;
 	private Button btnNew;
 	Controller controller = new Controller();
-	ObservableList<Object> data = FXCollections.observableArrayList(controller.doActionWithReturnValue("GetCategory", new ArrayList<>()));
+	ObservableList<Object> data = FXCollections.observableArrayList((ArrayList) controller.doAction("GetCategory", null));
 	public CategoryOverviewPane() {
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
@@ -59,7 +59,7 @@ public class CategoryOverviewPane extends GridPane {
 				categoryDetail.setOnCloseRequest(new EventHandler<WindowEvent>() {
 					@Override
 					public void handle(WindowEvent event) {
-						data = FXCollections.observableArrayList(controller.doActionWithReturnValue("GetCategory", new ArrayList<>()));
+						data = FXCollections.observableArrayList((ArrayList)controller.doAction("GetCategory", null));
 						table.setItems(data);
 						table.refresh();
 					}
