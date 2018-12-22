@@ -36,7 +36,7 @@ public class CategoryDetailPane extends GridPane {
         ComboBox categoryField = new ComboBox<>();
         for (int i = 0; i < catList.size(); i++) {
             Category tmpCat = (Category) catList.get(i);
-            if (tmpCat != null) {
+            if (tmpCat.getMainCategory() == null) {
                 categoryField.getItems().add(tmpCat.getTitle());
             }
         }

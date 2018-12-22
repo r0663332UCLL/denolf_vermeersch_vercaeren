@@ -2,6 +2,7 @@ package view.panels;
 
 import domain.controller.Controller;
 import domain.controller.ControllerException;
+import domain.model.Category;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,9 +15,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+
 public class QuestionDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
+	private int rowIndex = 2;
 	private Controller controller = new Controller();
+	ArrayList<String> statements = new ArrayList<>();
+    ArrayList<Object> catList = controller.doActionWithReturnValue("GetCategory", new ArrayList<>());
 
     public QuestionDetailPane() {
 		this.setPrefHeight(300);
@@ -42,7 +48,15 @@ public class QuestionDetailPane extends GridPane {
 
 		Pane addRemove = new HBox();
         Button btnAdd = new Button("add");
-		btnAdd.setOnAction(new AddStatementListener());
+		btnAdd.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                statements.add(statementField.getText());
+                for (int i = 0; i < statements.size(); i++) {
+                    statementsArea.setText(statementsArea.getText() + statements.get(i));
+                }
+            }
+        });
 		addRemove.getChildren().add(btnAdd);
 
         Button btnRemove = new Button("remove");
@@ -52,6 +66,10 @@ public class QuestionDetailPane extends GridPane {
 
 		add(new Label("Category: "), 0, 9, 1, 1);
         ComboBox categoryField = new ComboBox();
+        for (int i = 0; i < catList.size(); i++) {
+            Category tmpCat = (Category) catList.get(i);
+            categoryField.getItems().add(tmpCat.getTitle());
+        }
 		add(categoryField, 1, 9, 2, 1);
 
 		add(new Label("Feedback: "), 0, 10, 1, 1);
@@ -66,10 +84,24 @@ public class QuestionDetailPane extends GridPane {
 		btnOK.isDefaultButton();
 		btnOK.setText("Save");
 		add(btnOK, 1, 11, 2, 1);
+		//voor UI: eerst het type vraag, dan de vraag, dan een arraylist van Strings met statements, dan feedback en dan de categorie
 		btnOK.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				ArrayList<Object> params = new ArrayList<>();
+				params.add(questionField.getText());
 
+				if (categoryField.getSelectionModel().getSelectedItem() == null) {
+					params.add(null);
+				} else {
+					for (int i = 0; i < catList.size(); i++) {
+						Category tmpCat = (Category) catList.get(i);
+						if (tmpCat.getTitle().equals(categoryField.getSelectionModel().getSelectedItem().toString())) {
+							params.add(catList.get(i));
+						}
+					}
+				}
+				controller.doAction("AddCategory", params);
 			}
 		});
 	}

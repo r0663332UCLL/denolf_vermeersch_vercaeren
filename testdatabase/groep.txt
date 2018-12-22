@@ -5,3 +5,4 @@ nieuw;beschrijving;patronen
 nog 1;yes;patronen
 test;test;nog 1
 wownogeenvraag;beschrijving;null;
+maincat;cat without maincat;null;
