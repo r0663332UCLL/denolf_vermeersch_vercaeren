@@ -5,8 +5,10 @@ import domain.model.Category;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -43,7 +45,14 @@ public class CategoryDetailPane extends GridPane {
 
 		this.add(categoryField, 1, 2, 1, 1);
 
-		btnCancel = new Button("Cancel");
+        btnCancel = new Button("Cancel");
+        setCancelAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                final Node source = (Node) e.getSource();
+                final Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+            }});
 		this.add(btnCancel, 0, 3, 1, 1);
 
 		btnOK = new Button("Save");

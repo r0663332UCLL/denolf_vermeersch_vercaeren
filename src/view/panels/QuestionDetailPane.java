@@ -1,11 +1,15 @@
 package view.panels;
 
+import com.sun.corba.se.impl.protocol.giopmsgheaders.CancelRequestMessage;
+import com.sun.xml.internal.ws.api.Cancelable;
 import domain.controller.Controller;
 import domain.controller.ControllerException;
+import domain.controller.Handlers.AddQuestionHandler;
 import domain.model.Category;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -14,7 +18,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
+import java.awt.event.InputEvent;
 import java.util.ArrayList;
 
 public class QuestionDetailPane extends GridPane {
@@ -87,7 +93,13 @@ public class QuestionDetailPane extends GridPane {
 		add(feedbackField, 1, 10, 2, 1);
 
 		btnCancel = new Button("Cancel");
-		btnCancel.setText("Cancel");
+		setCancelAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				final Node source = (Node) e.getSource();
+				final Stage stage = (Stage) source.getScene().getWindow();
+				stage.close();
+			}});
 		add(btnCancel, 0, 11, 1, 1);
 
 		btnOK = new Button("Save");
