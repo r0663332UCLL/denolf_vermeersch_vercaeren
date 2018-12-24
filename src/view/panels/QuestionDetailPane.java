@@ -111,8 +111,8 @@ public class QuestionDetailPane extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				ArrayList<Object> params = new ArrayList<>();
-				if (statements.size() <= 2) {
-				    if (statements.get(0).equals("yes")) {
+				if (statements.size() == 2) {
+				    if (statements.get(0).equals("yes") || statements.get(0).equals("ja") || statements.get(0).equals("nee") || statements.get(0).equals("no")) {
                         params.add("YesNoQuestion");
                     } else {
 				        params.add("MultipleChoiceQuestion");

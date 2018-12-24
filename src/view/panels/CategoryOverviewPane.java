@@ -56,7 +56,7 @@ public class CategoryOverviewPane extends GridPane {
 				categoryDetail.initModality(Modality.APPLICATION_MODAL);
 				Group root = new Group();
 				Scene scene = new Scene(root);
-				categoryDetail.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				categoryDetail.setOnHidden(new EventHandler<WindowEvent>() {
 					@Override
 					public void handle(WindowEvent event) {
 						data = FXCollections.observableArrayList((ArrayList)controller.doAction("GetCategory", null));

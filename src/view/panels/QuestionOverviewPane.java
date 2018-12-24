@@ -55,7 +55,7 @@ public class QuestionOverviewPane extends GridPane {
 				questionDetail.initModality(Modality.APPLICATION_MODAL);
 				Group root = new Group();
 				Scene scene = new Scene(root);
-				questionDetail.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				questionDetail.setOnHidden(new EventHandler<WindowEvent>() {
 					@Override
 					public void handle(WindowEvent event) {
 						data = FXCollections.observableArrayList((ArrayList) controller.doAction("GetQuestion", null));

@@ -113,7 +113,7 @@ public class QuestionDbInFile implements QuestionDb {
         if (question != null) {
             separated = question.split("[" + separator + "]");
 
-            for (int i = 1; i <= separated.length -3; i++) {
+            for (int i = 1; i < separated.length -3; i++) {
                 statements.add(separated[i]);
             }
 

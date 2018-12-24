@@ -1,6 +1,8 @@
 package domain.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public abstract class Question {
     private String question;
@@ -28,6 +30,11 @@ public abstract class Question {
 
     public ArrayList<String> getStatements() {
         return statements;
+    }
+    public ArrayList<String> getRandomStatements(ArrayList<String> statements) {
+        ArrayList<String> larray = statements;
+        Collections.shuffle(larray);
+        return larray;
     }
 
     private void setStatements(ArrayList<String> statements) {

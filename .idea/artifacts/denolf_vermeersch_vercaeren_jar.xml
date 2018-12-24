@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="denolf_vermeersch_vercaeren:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/denolf_vermeersch_vercaeren_jar</output-path>
+    <root id="archive" name="denolf_vermeersch_vercaeren.jar">
+      <element id="module-output" name="denolf_vermeersch_vercaeren" />
+    </root>
+  </artifact>
+</component>
