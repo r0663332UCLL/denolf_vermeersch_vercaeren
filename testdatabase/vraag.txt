@@ -4,3 +4,5 @@ ssss;ssss;dddd;ssss;nieuw;domain.model.MultipleChoiceQuestion
 testvraag;dddddd;dddddd;fffffff;ff;ssss;bs2;domain.model.MultipleChoiceQuestion
 janeevraag;yes;no;jaofneeishet antwoord;nieuw;domain.model.YesNoQuestion
 nieuwe;yes;no;ja;nog 1;domain.model.YesNoQuestion
+oude vraag;yes;no;dd;patronen;domain.model.YesNoQuestion
+ddddd;dddd;ddddddd;dddddd;patronen;domain.model.MultipleChoiceQuestion

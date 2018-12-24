@@ -125,6 +125,9 @@ public class QuestionDetailPane extends GridPane {
 				params.add(feedbackField.getText());
 				params.add(categoryField.getSelectionModel().getSelectedItem().toString());
 				controller.doAction("AddQuestion", params);
+				final Node source = (Node) event.getSource();
+				final Stage stage = (Stage) source.getScene().getWindow();
+				stage.close();
 			}
 		});
 	}

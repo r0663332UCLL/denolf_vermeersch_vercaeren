@@ -42,30 +42,29 @@ public class MessagePane extends GridPane {
 			public void handle(ActionEvent event) {
 			    Controller controller = new Controller();
                 Test test = (Test) controller.doAction("GenerateTest", new ArrayList<>());
-
-			        if (!pause) {
-                        pause = true;
-                        TestPane questionPane = new TestPane(test, answers);
-                        final Stage stage = new Stage();
-                        stage.initModality(Modality.APPLICATION_MODAL);
-                        Group root = new Group();
-                        Scene scene = new Scene(root);
-                        root.getChildren().add(questionPane);
-                        stage.setScene(scene);
-                        stage.show();
-                        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                            @Override
-                            public void handle(WindowEvent event) {
-                                pause = false;
-                            }
-                        });
+                while (test.hasQuestions()) {
+                    pause = false;
+                    TestPane questionPane = new TestPane(test, answers);
+                    final Stage stage = new Stage();
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    Group root = new Group();
+                    Scene scene = new Scene(root);
+                    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                        @Override
+                        public void handle(WindowEvent event) {
+                            pause = true;
+                        }
+                    });
+                    root.getChildren().add(questionPane);
+                    stage.setScene(scene);
+                    stage.show();
+                    while (!pause) {
 
                     }
-
+                }
 			}
 		});
 		add(testButton, 0,1,1,1);
 		setHalignment(testButton, HPos.CENTER);
 	}
-
-}
+ }

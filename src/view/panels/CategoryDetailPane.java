@@ -76,6 +76,9 @@ public class CategoryDetailPane extends GridPane {
                     }
                 }
                 controller.doAction("AddCategory", params);
+                final Node source = (Node) event.getSource();
+                final Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
             }
         });
     }

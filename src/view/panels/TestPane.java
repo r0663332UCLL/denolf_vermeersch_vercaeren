@@ -8,8 +8,10 @@ import domain.model.Test;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class TestPane extends GridPane {
 	private Button submitButton;
@@ -46,6 +48,9 @@ public class TestPane extends GridPane {
             @Override
             public void handle(ActionEvent event) {
                 getSelectedStatements();
+                final Node source = (Node) event.getSource();
+                final Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
             }
         });
 	}
